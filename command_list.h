@@ -11,6 +11,9 @@ TODO: maybe make it function like a queue instead in the future
 #ifndef COMMANDLIST
 #define COMMANDLIST
 
+// This is the file type I used for keeping track on which threads are active
+typedef unsigned long long bitarray;
+
 // this struct is the whole point of this file, it's a stack of commands, and threads that perform those commands
 typedef struct command_list {
 	int len;  // actual length of the commands list
@@ -20,7 +23,7 @@ typedef struct command_list {
 	pthread_mutex_t all_taken; // lock for when all threads are occupied, and you have to wait for some to become avilable
 	int thread_count;
 	pthread_t* threads;
-	unsigned int activet;
+	bitarray activet;
 } coms;
 
 // EXTREMLY important function, it make funny beep

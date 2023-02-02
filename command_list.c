@@ -129,7 +129,7 @@ static void* workerThreadFunc(void* args) {
 }
 
 coms* initComs(int thread_count) {
-	if (sizeof(unsigned int) * BITS_IN_BYTE < thread_count) {
+	if (sizeof(bitarray) * BITS_IN_BYTE < thread_count) {
 		printf("activet is represented using an unsigned int and can only keep track of %lu threads, %d is too high for it.\n", sizeof(unsigned int) * BITS_IN_BYTE, thread_count);
 		return NULL;
 	}
